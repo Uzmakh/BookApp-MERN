@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
-    name:{
+    name: {
         type: String,
         required: true
     },
@@ -17,11 +17,10 @@ const userSchema = new mongoose.Schema({
         unique: true,
         lowercase: true
     }
-     
 },
     {
-    timestamps: true
-}
+        timestamps: true
+    }
 );
 
 export const User = mongoose.model('User', userSchema);
