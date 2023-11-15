@@ -8,23 +8,18 @@ const app = express();
 
 app.use(cors())
 
+// Middleware to parse JSON data from requests
+app.use(express.json());
+
 const PORT = process.env.PORT;
 
 //default rout
 app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-//other routes
-app.get('/api/v1/facebook', (req, res) => {
-  res.send('Hello Facebook World!')
-})
-app.get('/api/v1/instagram', (req, res) => {
-  res.send('Hello Instagram World!')
+  res.send('Node Application!')
 })
 
-
-// Middleware to parse JSON data from requests
-app.use(express.json());
+// available routes
+app.use('/', require('./routes/baseRoutes'));
 
 
 app.listen(PORT, () => {
