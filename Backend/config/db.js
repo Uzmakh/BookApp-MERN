@@ -6,8 +6,8 @@ config(); // Load environment variables from .env file
 
 
 const MONGODB_URI =
-    process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/aktiMernProject";
-
+    process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/bookapp";
+// mongoose.connect('mongodb://127.0.0.1:27017/myapp');
 const connectToMongodb = () => {
     mongoose
         .connect(MONGODB_URI)

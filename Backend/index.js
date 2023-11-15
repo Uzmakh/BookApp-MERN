@@ -3,7 +3,7 @@ const connectToMongodb = require("./config/db");
 const cors = require("cors")
 const { config } = require("dotenv");
 config(); // Load environment variables from .env file
-// connectToMongodb()
+connectToMongodb()
 const app = express();
 
 app.use(cors())
