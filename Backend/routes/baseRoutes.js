@@ -3,6 +3,8 @@ const router = express.Router();
 
 const authRoutes = require('./authRoutes/authRoutes')
 const bookRoutes = require('./bookRoutes/bookRoutes')
+const authcontrollers = require('../controllers/baseControllers')
+
 
 // define base routes for your modules
 // book routes

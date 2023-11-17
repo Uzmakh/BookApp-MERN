@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 })
 
 // available routes
-app.use('/', require('./routes/baseRoutes'));
+app.use('/api/v1/', require('./routes/baseRoutes'));
 
 
 app.listen(PORT, () => {
