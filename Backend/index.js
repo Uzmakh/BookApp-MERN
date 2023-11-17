@@ -10,15 +10,25 @@ app.use(cors())
 
 // Middleware to parse JSON data from requests
 app.use(express.json());
+// error-handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something went wrong!');
+});
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
-//default rout
+//default route
 app.get('/', (req, res) => {
   res.send('Node Application!')
 })
+// default route
+app.get("/api/v1/contact", (req, res) => {
+  res.send("Hello From Node js server!");
+});
 
 // available routes
+// do notice on base routes
 app.use('/api/v1/', require('./routes/baseRoutes'));
 
 
