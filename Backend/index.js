@@ -29,7 +29,7 @@ app.get("/api/v1/contact", (req, res) => {
 
 // available routes
 // do notice on base routes
-app.use('/api/v1/', require('./routes/baseRoutes'));
+app.use('/', require('./routes/baseRoutes'));
 
 
 app.listen(PORT, () => {
