@@ -12,7 +12,7 @@ router.post("/register",
         body("name", "Enter a valid name min 3 characters").isLength({
             min: 3,
         }),
-        body("email", "Enter a valid email must include @ and .").isEmail(),
+        body("email", "Enter a valid email, must include @ and .com").isEmail(),
         body("password", "Password length min 5").isLength({
             min: 5
         }),
