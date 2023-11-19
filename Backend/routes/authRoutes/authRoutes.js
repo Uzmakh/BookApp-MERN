@@ -19,6 +19,6 @@ router.post("/register",
     ],
     userRegisterController);
 
-// /api/v1//register
+// /api/v1/register
 
 module.exports = router;
