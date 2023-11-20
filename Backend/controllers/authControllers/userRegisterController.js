@@ -13,7 +13,7 @@ const userRegisterController = async (req, res) => {
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
 		return res.json({
-			success: success,
+			success,
 			errors: errors.array()
 		});
 	}
@@ -27,12 +27,16 @@ const userRegisterController = async (req, res) => {
 				.json({ success, error: "user with this email already exists" });
 		}
 
+		// Hash the password
+		const salt = bcrypt.genSaltSync(10);
+		const hashedPassword = await bcrypt.hashSync(password, salt);
+
 	// Save the user data in MongoDB
 		// Create a new User instance with the extracted data
 		const newUser = new User({
 			name: name,
 			email: email,
-			password: password,
+			password: hashedPassword,
 		});
 
 		// save the new user to the database
@@ -43,15 +47,15 @@ const userRegisterController = async (req, res) => {
 
 
 		// API Testing through postman-data testing(same data)
-		if (newUser) {
-			return res.json({
-				name: name,
-				email: email,
-				password: password,
-			})
-		} else {
-			return res.json({ message: "user failed to register!" })
-		}
+		// if (newUser) {
+		// 	return res.json({
+		// 		name: name,
+		// 		email: email,
+		// 		password: password,
+		// 	})
+		// } else {
+		// 	return res.json({ message: "user failed to register!" })
+		// }
 	} catch (error) {
 		// Handle any errors that occur during user registration
 		return res.status(500).json({ error: error.message })

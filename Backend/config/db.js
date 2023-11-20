@@ -1,13 +1,15 @@
 const mongoose = require("mongoose");
 const { config } = require("dotenv");
-// copy the connection string from mongodb comapss
 
 config(); // Load environment variables from .env file
 
-
+// copy the connection string from mongodb compass
 const MONGODB_URI =
     process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/bookapp";
 // mongoose.connect('mongodb://127.0.0.1:27017/myapp');
+
+// js promises
+// promise => the value, that we don't know for  now, but we will know it in future
 const connectToMongodb = () => {
     mongoose
         .connect(MONGODB_URI)
