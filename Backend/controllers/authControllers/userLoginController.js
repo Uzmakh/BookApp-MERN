@@ -14,12 +14,12 @@ const userLoginController = async (req, res) => {
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
-
+    //  object destructuring
     const { email, password } = req.body;
 
     try {
         let user = await User.findOne({ email: email });
-
+      console.log(user);
         if (!user) {
             return res.status(400).json({ error: 'Email or password is incorrect' });
         }
@@ -27,9 +27,9 @@ const userLoginController = async (req, res) => {
         const passwordCompare = await bcrypt.compareSync(password, user.password);
 
         if (!passwordCompare) {
-            return res.status(400).json({ error: 'Email or password is incorrect' });
+            return res.status(400).json({ error: 'Invalid email or password!' });
         }
-
+         // Authentication through JWT
         // Extracting password and rest of the user data
         const { password: hashedPassword, ...userWithoutPassword } = user.toObject();
 

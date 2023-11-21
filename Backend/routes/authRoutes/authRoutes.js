@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { body } = require('express-validator');
 const userRegisterController = require("../../controllers/authControllers/userRegisterController");
-
+const userLoginController = require("../../controllers/authControllers/userLoginController")
 
 
 
@@ -18,6 +18,9 @@ router.post("/register",
         }),
     ],
     userRegisterController);
+
+// user login route
+router.post("/login", userLoginController);
 
 // /api/v1/register
 
