@@ -9,7 +9,7 @@ const userRegisterController = async (req, res) => {
 	const { name, email, password:password } = req.body;
 
 	// checking the validation results
-	// if there are errors,return bad request and errors
+    // if there are errors,return bad request and errors
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
 		return res.json({
@@ -24,7 +24,7 @@ const userRegisterController = async (req, res) => {
 		if (user) {
 			return res
 				.status(400)
-				.json({ success, error: "user with this email already exists" });
+				.json({ success:false, error: "user with this email already exists" });
 		}
 
 		// Hash the password
