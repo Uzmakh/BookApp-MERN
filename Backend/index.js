@@ -10,7 +10,9 @@ app.use(cors())
 
 // Middleware to parse JSON data from requests
 app.use(express.json());
-
+// add middleware to parse form data instead of JSON
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
 
 
